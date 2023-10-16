@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nom',120);
             $table->integer('ordre')->nullable();
             $table->boolean('active')->default(true);
+            $table->boolean('nouvel_onglet')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

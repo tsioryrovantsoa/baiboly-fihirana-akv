@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nom',120);
             $table->integer('ordre')->nullable();
             $table->boolean('active')->default(true);
+            $table->boolean('afficher_dropdown')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });
