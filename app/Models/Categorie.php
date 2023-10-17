@@ -12,9 +12,13 @@ class Categorie extends Model
     use SoftDeletes;
 
     /**
- * The attributes that are mass assignable.
- *
- * @var array
- */
-protected $fillable = ['nom', 'ordre', 'active'];
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['nom', 'ordre', 'active'];
+    public function sous_categories()
+    {
+        return $this->hasMany(SousCategorie::class);
+    }
 }
