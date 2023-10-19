@@ -30,19 +30,97 @@
         </div>
     </div>
     <div class="main-con">
-        @include('image')
+        <div class="slider">
+            <div class="color"> <span> </span></div>
+            <div class="wrap">
+                <div class="fluid_container">
+                    @include('image')
+                </div><!-- .fluid_container -->
+                <div class="clear"></div>
+            </div>
+        </div>
+
         <div class="blog-content">
             <div class="wrap">
                 <div class="blog-grids">
                     <div class="blog-left">
                         <h2 style="    color: #e8603c;
-						font-size: 30px;">@yield('title')</h2>
+						font-size: 30px;">Fihirana - FFPM</h2>
                         <br>
                         <div class="from_blog">
-                            @yield('content')
+                            <p><a href="slide/fihirana/ffpm/001 - Andriananahary Masina indrindra.pptx"
+                                    target="_self">001 -
+                                    Andriananahary Masina indrindra</a></p>
+                            <div class="fix single_blogpost_container">
+                                <div class="fix single_blog_post floatleft">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    @include('blog-right')
+                    <div class="blog-right">
+                        <div class="side-bar">
+                            <div class="grid-right-headings">
+                                <h2><a href="#">FIMPIZ </a></h2>
+                                <p>Fikambanan'ny Mpitendry Zava-maneno Andavamamba Kristy Velona</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"> </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!--End-gallery-->
+        <!--start footer-->
+        <div class="footer">
+            <div class="footer-main wrap">
+                <div class="footer-grids">
+                    <div class="fgrid">
+                        <h3>about jetro</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua,Ut enim ad minim veniam.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
+                        </p>
+                    </div>
+                    <div class="fgrid">
+                        <h3>twitter widget</h3>
+                        <div>
+                            <p><a href="#">@Lorem ipsum</a> What an awesome design with great functioality:)</p>
+                            <a href="#">about 1 hour ago</a>
+                        </div>
+                        <div>
+                            <p><a href="#">@Lorem ipsum</a> What an awesome design with great functioality:)</p>
+                            <a href="#">about 2 hour ago</a>
+                        </div>
+                        <div>
+                            <p>Follow <a href="#">@Lorem ipsum</a></p>
+                        </div>
+                    </div>
+                    <div class="fgrid">
+                        <h3>contact us</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua,Ut enim ad minim veniam.</p>
+                        <a href="#">
+                            <p>information@jetro.com</p>
+                        </a>
+                        <h4>1,22,333,4444</h4>
+                        <div class="social-media">
+                            <ul>
+                                <li> <span class="simptip-position-bottom simptip-movable" data-tooltip="Facebook"><a
+                                            href="#" target="_blank"> </a></span></li>
+                                <li><span class="simptip-position-bottom simptip-movable" data-tooltip="twitter"><a
+                                            href="#" target="_blank"> </a> </span></li>
+                                <li><span class="simptip-position-bottom simptip-movable" data-tooltip="email"><a
+                                            href="#" target="_blank"> </a></span></li>
+                                <li><span class="simptip-position-bottom simptip-movable" data-tooltip="rss"><a
+                                            href="#" target="_blank"> </a></span></li>
+                                <li><span class="simptip-position-bottom simptip-movable" data-tooltip="vimeo"><a
+                                            href="#" target="_blank"> </a></span></li>
+                            </ul>
+                        </div>
+                    </div>
                     <div class="clear"> </div>
                 </div>
             </div>
