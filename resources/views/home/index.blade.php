@@ -3,13 +3,10 @@
 @section('title', 'FIMPIZ')
 
 @section('content')
-    <h4><a href="">Bonjour</a></h4>
-
-    <div style="padding-top: 15px;">
-        <p>Ceci est un text de test</p>
-        <p>Ceci est un text de test</p>
-        <p>Ceci est un text de test</p>
-        <p>Ceci est un text de test</p>
-    </div>
+    <p>
+        <a href="slide/fihirana/ffpm/001 - Andriananahary Masina indrindra.pptx" target="_self">
+            001 - Andriananahary Masina indrindra
+        </a>
+    </p>
 
 @endsection

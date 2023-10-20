@@ -45,12 +45,10 @@
                 <div class="blog-grids">
                     <div class="blog-left">
                         <h2 style="    color: #e8603c;
-						font-size: 30px;">Fihirana - FFPM</h2>
+						font-size: 30px;">@yield('title')</h2>
                         <br>
                         <div class="from_blog">
-                            <p><a href="slide/fihirana/ffpm/001 - Andriananahary Masina indrindra.pptx"
-                                    target="_self">001 -
-                                    Andriananahary Masina indrindra</a></p>
+                            @yield('content')
                             <div class="fix single_blogpost_container">
                                 <div class="fix single_blog_post floatleft">
                                 </div>
