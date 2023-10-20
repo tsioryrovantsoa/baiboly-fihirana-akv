@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Categorie extends Model
 {
@@ -20,5 +21,10 @@ class Categorie extends Model
     public function sous_categories()
     {
         return $this->hasMany(SousCategorie::class);
+    }
+
+    public function getSlug(): string
+    {
+        return Str::slug($this->nom);
     }
 }

@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SousCategorieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+$idRegex = '[0-9]+';
+$slugRegex = '[0-9a-z\-]+';
+
 Route::get('/', function () {
     return view('base');
 });
 
-Route::get('/accueil', [HomeController::class, 'index'])->name('home');
+Route::get('/tongasoa', [HomeController::class, 'index'])->name('home');
+Route::get('/categorie/{slug}-{categorie}', [CategorieController::class, 'show'])->name('categorie.show')->where(['categorie' => $idRegex, 'slug' => $slugRegex]);
+Route::get('/souscategorie/{slug}-{souscategorie}', [SousCategorieController::class, 'show'])->name('souscategorie.show')->where(['souscategorie' => $idRegex, 'slug' => $slugRegex]);

@@ -2,10 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class SousCategorie extends Model
 {
     use HasFactory;
+
+    public function getSlug(): string
+    {
+        return Str::slug($this->nom);
+    }
 }

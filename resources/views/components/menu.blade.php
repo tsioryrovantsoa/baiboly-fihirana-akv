@@ -3,12 +3,16 @@
     <ul class="nav">
         @foreach ($categories as $categorie)
             <li class="dropdown">
-                <a class="dropbtn" href="#">{{ $categorie->nom }}</a>
-                <div class="dropdown-content">
-                    @foreach ($categorie->sous_categories as $sous_categorie)
-                        <a href="#">{{ $sous_categorie->nom }}</a>
-                    @endforeach
-                </div>
+                <a class="dropbtn"
+                    href="{{ $categorie->afficher_dropdown ? '#' : route('categorie.show', ['slug' => $categorie->getSlug(), $categorie]) }}">{{ $categorie->nom }}</a>
+                @if ($categorie->afficher_dropdown)
+                    <div class="dropdown-content">
+                        @foreach ($categorie->sous_categories as $sous_categorie)
+                            <a href="{{ route('souscategorie.show', ['slug' => $sous_categorie->getSlug(), $sous_categorie]) }}"
+                                @if ($sous_categorie->nouvel_onglet) target="_blank" @endif>{{ $sous_categorie->nom }}</a>
+                        @endforeach
+                    </div>
+                @endif
             </li>
         @endforeach
         <div class="clear"> </div>
