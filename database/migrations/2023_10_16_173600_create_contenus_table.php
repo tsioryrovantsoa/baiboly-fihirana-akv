@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignIdFor(SousCategorie::class);
             $table->string('titre');
             $table->integer('ordre')->nullable();
-            $table->boolean('active')->default(true);
             $table->string('fichier');
             $table->timestamps();
             $table->softDeletes();

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Categorie::class);
             $table->string('nom',120);
+            $table->string('acronyme',7)->nullable();
             $table->integer('ordre')->nullable();
-            $table->boolean('active')->default(true);
             $table->boolean('nouvel_onglet')->default(false);
             $table->timestamps();
             $table->softDeletes();

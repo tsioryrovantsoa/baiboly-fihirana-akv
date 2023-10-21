@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('titre',120);
             $table->string('description',120);
             $table->integer('ordre')->nullable();
-            $table->boolean('active')->default(true);
             $table->string('fichier');
             $table->timestamps();
             $table->softDeletes();

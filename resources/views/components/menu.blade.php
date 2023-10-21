@@ -1,5 +1,5 @@
 <div class="menu">
-    <a class="toggleMenu" href="#"><img src="images/nav.png" alt=" " /></a>
+    <a class="toggleMenu" href="#"><img src="{{ asset('images/nav.png') }}" alt=" " /></a>
     <ul class="nav">
         @foreach ($categories as $categorie)
             <li class="dropdown">
@@ -17,5 +17,5 @@
         @endforeach
         <div class="clear"> </div>
     </ul>
-    <script type="text/javascript" src="js/responsive-nav.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/responsive-nav.min.js') }}"></script>
 </div>
