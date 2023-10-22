@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CategorieSeeder::class,
             SousCategorieSeeder::class,
+            AntemaSeeder::class,
+            TsantaSeeder::class
         ]);
     }
 }

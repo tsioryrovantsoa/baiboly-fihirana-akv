@@ -14,4 +14,9 @@ class SousCategorie extends Model
     {
         return Str::slug($this->nom);
     }
+
+    public function contenus()
+    {
+        return $this->hasMany(Contenu::class)->orderBy('numero','asc');
+    }
 }

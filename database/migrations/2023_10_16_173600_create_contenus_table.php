@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(SousCategorie::class);
             $table->string('titre');
-            $table->integer('ordre')->nullable();
+            $table->integer('numero')->nullable();
             $table->string('fichier');
             $table->timestamps();
             $table->softDeletes();

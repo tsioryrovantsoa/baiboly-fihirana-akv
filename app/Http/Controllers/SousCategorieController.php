@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 
 class SousCategorieController extends Controller
 {
-    public function show(string $slug, Categorie $categorie, SousCategorie $sousCategorie)
+    public function show(string $slug, SousCategorie $souscategorie)
     {
-        dd('sous-cate');
+        return view('souscategorie.show', ['souscategorie' => $souscategorie]);
     }
 }
