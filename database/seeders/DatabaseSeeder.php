@@ -16,9 +16,14 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CategorieSeeder::class,
             SousCategorieSeeder::class,
+            FFPMSeeder::class,
             FFSeeder::class,
             AntemaSeeder::class,
-            TsantaSeeder::class
+            TsantaSeeder::class,
+            FIFSeeder::class,
+            FanekemPinoanaSeeder::class,
+            FanekenaSeeder::class,
+            VavakaSeeder::class,
         ]);
     }
 }

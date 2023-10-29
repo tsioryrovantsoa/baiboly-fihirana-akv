@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Categorie::class);
             $table->string('nom',120);
-            $table->string('acronyme',7);
+            $table->string('acronyme',15);
             $table->integer('ordre')->nullable();
             $table->boolean('nouvel_onglet')->default(false);
             $table->boolean('afficher_acronyme')->default(true);
