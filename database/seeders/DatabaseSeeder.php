@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             FanekemPinoanaSeeder::class,
             FanekenaSeeder::class,
             VavakaSeeder::class,
+            MiantsaKristyVelonaSeeder::class
         ]);
     }
 }

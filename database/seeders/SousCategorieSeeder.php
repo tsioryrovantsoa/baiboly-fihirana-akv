@@ -24,6 +24,7 @@ class SousCategorieSeeder extends Seeder
             ['categorie_id' => 2, 'nom' => "Vavaka Hafa", 'acronyme' => 'Vavaka hafa', 'ordre' => 3, 'nouvel_onglet' => false, 'afficher_acronyme' => false, 'numero_requis' => false],
             ['categorie_id' => 4, 'nom' => "Interlude", 'acronyme' => 'INT', 'ordre' => 1, 'nouvel_onglet' => true, 'afficher_acronyme' => false, 'numero_requis' => false],
             ['categorie_id' => 4, 'nom' => "Hira hafa", 'acronyme' => 'HHAFA', 'ordre' => 2, 'afficher_acronyme' => false, 'numero_requis' => false],
+            ['categorie_id' => 4, 'nom' => "Miantsa an'i Kristy Velona", 'acronyme' => 'MKV', 'ordre' => 3, 'afficher_acronyme' => false],
             ['categorie_id' => 3, 'nom' => "FIkambanan'ny MPItendry Zavamaneno", 'acronyme' => 'FIMPIZ'],
             ['categorie_id' => 3, 'nom' => "Fikambanan'ny Mpitoriteny sy Katekista", 'acronyme' => 'FMK'],
             ['categorie_id' => 3, 'nom' => "Dorkasy", 'acronyme' => "DORKASY"],
