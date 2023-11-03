@@ -24,7 +24,14 @@ class DatabaseSeeder extends Seeder
             FanekemPinoanaSeeder::class,
             FanekenaSeeder::class,
             VavakaSeeder::class,
-            MiantsaKristyVelonaSeeder::class
+            MiantsaKristyVelonaSeeder::class,
+            HiraHafaSeeder::class,
+            InterludeSeeder::class,
+            ChoraleSeeder::class,
+            FdlSeeder::class,
+            SafifSeeder::class,
+            SampatiSeeder::class,
+            SlkSeeder::class
         ]);
     }
 }

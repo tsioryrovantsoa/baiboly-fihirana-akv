@@ -23,6 +23,8 @@ class MiantsaKristyVelonaSeeder extends Seeder
             ["sous_categorie_id" => 11,"titre" => "Hetseho mafy ny herinao (Faneva faha-60)", "numero" => 4, "fichier" => "MKV 4 - Hetseho mafy ny herinao (Faneva faha-60).pptx"],
             ["sous_categorie_id" => 11,"titre" => "'Ty Kapoaka", "numero" => 5, "fichier" => "MKV 5 - 'Ty Kapoaka.pptx"],
             ["sous_categorie_id" => 11,"titre" => "Miverena ry tanora", "numero" => 6, "fichier" => "MKV 6 - Miverena ry tanora.pptx"],
+            ["sous_categorie_id" => 11,"titre" => "Atolotray ho Anao Ray Tsitoha", "numero" => 23, "fichier" => "MKV 23 - Atolotray ho Anao Ray Tsitoha.pptx"],
+            ["sous_categorie_id" => 11,"titre" => "Kristy Velona, Atolotray Anao", "numero" => 24, "fichier" => "MKV 24 - Kristy Velona, Atolotray Anao.pptx"],
         ];
         foreach ($mkvs as $mkv) {
             Contenu::create($mkv);
