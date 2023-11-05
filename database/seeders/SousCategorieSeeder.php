@@ -38,6 +38,7 @@ class SousCategorieSeeder extends Seeder
             ['categorie_id' => 3, 'nom' => "Fikambanan'ny Diakona sy Loholona", 'acronyme' => "FDL", 'afficher_acronyme' => false, 'numero_requis' => false],
             ['categorie_id' => 3, 'nom' => "Sekoly Alahady", 'acronyme' => "SA", 'afficher_acronyme' => false, 'numero_requis' => false],
             ['categorie_id' => 3, 'nom' => "Chorale Ny Akon'I Kristy Velona", 'acronyme' => "CHORALE", 'afficher_acronyme' => false, 'numero_requis' => false],
+            ['categorie_id' => 3, 'nom' => "Sekoly Olom-bavaka sy FInoana", 'acronyme' => "SOFI", 'afficher_acronyme' => false, 'numero_requis' => false],
         ];
 
         foreach ($souscategories as $souscategorie) {

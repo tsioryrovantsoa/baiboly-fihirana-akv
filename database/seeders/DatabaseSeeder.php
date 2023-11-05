@@ -31,7 +31,11 @@ class DatabaseSeeder extends Seeder
             FdlSeeder::class,
             SafifSeeder::class,
             SampatiSeeder::class,
-            SlkSeeder::class
+            SlkSeeder::class,
+            StkSeeder::class,
+            SvmSeeder::class,
+            VflSeeder::class,
+            SofiSeeder::class
         ]);
     }
 }
