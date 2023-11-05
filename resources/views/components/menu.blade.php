@@ -1,6 +1,9 @@
 <div class="menu">
     <a class="toggleMenu" href="#"><img src="{{ asset('images/nav.png') }}" alt=" " /></a>
     <ul class="nav">
+        <li class="dropdown">
+            <a class="dropbtn" href="{{ route('baiboly.index') }}">Baiboly</a>
+        </li>
         @foreach ($categories as $categorie)
             <li class="dropdown">
                 <a class="dropbtn"

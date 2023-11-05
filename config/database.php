@@ -43,6 +43,11 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
+        'baiboly' => [
+            'driver' => env('DB_CONNECTION_SECOND', 'sqlite'),
+            'database' => env('DB_DATABASE_SECOND', database_path('baiboly.sqlite')),
+        ],
+
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
