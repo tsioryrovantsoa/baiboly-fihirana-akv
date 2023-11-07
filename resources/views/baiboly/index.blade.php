@@ -3,9 +3,11 @@
 @section('title', 'Baiboly')
 
 @section('content')
-
+    @if (session()->has('success'))
+        <div class="message alert style-1 rounded">{{ session('success') }}<a href="#" class="close slide">x</a></div>
+    @endif
     <div class="contact-form" style="margin-top:15px;">
-        <form method="post" action="{{route('baiboly.send')}}">
+        <form method="post" action="{{ route('baiboly.send') }}">
             @csrf
             <div>
                 <span>
@@ -14,24 +16,39 @@
                             <option value="{{ $chapter->_id }}">{{ $chapter->title }}</option>
                         @endforeach
                     </select>
+                    @error('chapter_id')
+                        <h4 style="margin-top: 8px;">{{ $message }}</h4>
+                    @enderror
                 </span>
             </div>
             <br>
             <div>
                 <span>
-                    <input type="number" name="toko" class="active textbox" placeholder="toko">
+                    <input type="number" name="toko" class="active textbox" placeholder="toko"
+                        value="{{ old('toko') }}">
+                    @error('toko')
+                        <h4 style="margin-top: 8px;">{{ $message }}</h4>
+                    @enderror
                 </span>
             </div>
             <br>
             <div>
                 <span>
-                    <input type="number" name="andininy_deb" class="active textbox" placeholder="andininy faha">
+                    <input type="number" name="andininy_deb" class="active textbox" placeholder="andininy faha"
+                    value="{{ old('andininy_deb') }}">
+                    @error('andininy_deb')
+                        <h4 style="margin-top: 8px;">{{ $message }}</h4>
+                    @enderror
                 </span>
             </div>
             <br>
             <div>
                 <span>
-                    <input type="number" name="andininy_fin" class="active textbox" placeholder="hatramin'ny">
+                    <input type="number" name="andininy_fin" class="active textbox" placeholder="hatramin'ny"
+                    value="{{ old('andininy_fin') }}">
+                    @error('andininy_fin')
+                        <h4 style="margin-top: 8px;">{{ $message }}</h4>
+                    @enderror
                 </span>
             </div>
             <div class="clear"></div>

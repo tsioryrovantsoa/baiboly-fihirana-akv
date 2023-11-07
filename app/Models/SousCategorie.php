@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Storage;
 
 class SousCategorie extends Model
 {
@@ -18,5 +19,10 @@ class SousCategorie extends Model
     public function contenus()
     {
         return $this->hasMany(Contenu::class)->orderBy('numero','asc')->orderBy('titre','asc');
+    }
+
+    public function fichierLogo(): string
+    {
+        return Storage::url('logo/'.$this->logo);
     }
 }

@@ -11,7 +11,7 @@
                         <div class="portfolio-wrapper">
                             <a
                                 href="{{ route('souscategorie.show', ['slug' => $sous_categorie->getSlug(), $sous_categorie]) }}">
-                                <img src="{{ asset('images/image1.jpg') }}" alt="Image 1" />
+                                <img src="{{ $sous_categorie->fichierLogo() }}" alt="Image 1" />
                                 <span><img src="{{ asset('images/plus.png') }}" alt="" /> </span>
                                 <div class="desc">
                                     <h3>{{ $sous_categorie->acronyme ?? $sous_categorie->nom }}</h3>

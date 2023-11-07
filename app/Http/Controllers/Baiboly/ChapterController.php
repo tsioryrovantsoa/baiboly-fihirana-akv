@@ -13,13 +13,14 @@ class ChapterController extends Controller
 {
     public function index()
     {
-        return view('baiboly.index', ['chapters' => Chapters::all()]);
+        return view('baiboly.index', ['chapters' => Chapters::orderBy('title', 'asc')->get()]);
     }
     public function send(BaibolyGetRequest $request)
     {
         $input = ($request->validated());
-        exec('python F:\\Projet\\Perso\\baiboly-to-powerpoint\\baiboly.py '.$input['chapter_id'].' '.$input['toko'].' '.$input['andininy_deb'].' '.$input['andininy_fin'].'',$output, $return_var);
+        exec('python F:\\Projet\\Perso\\baiboly-to-powerpoint\\baiboly.py ' . $input['chapter_id'] . ' ' . $input['toko'] . ' ' . $input['andininy_deb'] . ' ' . $input['andininy_fin'] . '', $output, $return_var);
 
+        return back()->with('success', 'Envoyer');
         //Process::fromShellCommandline('python F:\\Projet\\Perso\\baiboly-to-powerpoint\\baiboly.py 8220 1 1 10')->run();
         // Chemin vers le fichier Python
         // $pythonScript = ('F:\\Projet\\Perso\\baiboly-to-powerpoint\\baiboly.py');
