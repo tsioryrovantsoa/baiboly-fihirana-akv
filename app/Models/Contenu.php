@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,6 +19,11 @@ class Contenu extends Model
      * @var array
      */
     protected $fillable = ['sous_categorie_id', 'titre', 'ordre', 'fichier'];
+
+    public function sous_categorie(): BelongsTo
+    {
+        return $this->belongsTo(SousCategorie::class);
+    }
 
     public function fichierURL(): string
     {

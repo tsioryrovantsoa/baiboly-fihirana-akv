@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
 
 class SousCategorie extends Model
@@ -14,6 +15,11 @@ class SousCategorie extends Model
     public function getSlug(): string
     {
         return Str::slug($this->nom);
+    }
+
+    public function categorie(): BelongsTo
+    {
+        return $this->belongsTo(Categorie::class);
     }
 
     public function contenus()

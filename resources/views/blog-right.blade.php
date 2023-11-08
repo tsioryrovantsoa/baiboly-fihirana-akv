@@ -1,6 +1,11 @@
-{{-- <div class="side-bar">
-    <div class="grid-right-headings">
-        <h2><a href="#">FIMPIZ </a></h2>
-        <p>Fikambanan'ny Mpitendry Zava-maneno Andavamamba Kristy Velona</p>
-    </div>
-</div> --}}
+<div class="contact-form" style="margin-top:10px;width:auto">
+    <form method="get" action="{{ route('search.index') }}">
+        <div>
+            <span><input name="search" type="text" class="textbox right" style="width: auto"
+                    value="{{ $search ?? ''}}"></span>
+        </div>
+        <div>
+            <span><input type="submit" value="Karohy"></span>
+        </div>
+    </form>
+</div>

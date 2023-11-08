@@ -18,30 +18,8 @@ class ChapterController extends Controller
     public function send(BaibolyGetRequest $request)
     {
         $input = ($request->validated());
-        exec('python F:\\Projet\\Perso\\baiboly-to-powerpoint\\baiboly.py ' . $input['chapter_id'] . ' ' . $input['toko'] . ' ' . $input['andininy_deb'] . ' ' . $input['andininy_fin'] . '', $output, $return_var);
+        exec('python '.config('baiboly.baiboly_app').' ' . $input['chapter_id'] . ' ' . $input['toko'] . ' ' . $input['andininy_deb'] . ' ' . $input['andininy_fin'] . '', $output, $return_var);
 
         return back()->with('success', 'Envoyer');
-        //Process::fromShellCommandline('python F:\\Projet\\Perso\\baiboly-to-powerpoint\\baiboly.py 8220 1 1 10')->run();
-        // Chemin vers le fichier Python
-        // $pythonScript = ('F:\\Projet\\Perso\\baiboly-to-powerpoint\\baiboly.py');
-
-        // $arguments = [
-        //     '8220',  // Remplacez par le premier argument
-        //     '1',
-        //     '1',
-        //     '10'  // Remplacez par le deuxième argument, etc.
-        // ];
-
-        // $command = array_merge(["C:\\Users\\tsiory\\AppData\\Local\\Programs\\Python\\Python311\\python.exe", $pythonScript], $arguments);
-
-        // $process = new Process($command);
-
-        // try {
-        //     $process->mustRun();
-
-        //     dd($process->getErrorOutput());
-        // } catch (ProcessFailedException $exception) {
-        //     dd($exception->getMessage());
-        // }
     }
 }

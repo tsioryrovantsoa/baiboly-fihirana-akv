@@ -3,6 +3,7 @@
 use App\Http\Controllers\Baiboly\ChapterController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SousCategorieController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,7 @@ Route::get('/', function () {
 Route::get('/tongasoa', [HomeController::class, 'index'])->name('home');
 Route::get('/baiboly', [ChapterController::class, 'index'])->name('baiboly.index');
 Route::post('/baiboly', [ChapterController::class, 'send'])->name('baiboly.send');
+Route::get('/result', [SearchController::class, 'index'])->name('search.index');
 Route::get('/sokajy/{slug}-{categorie}', [CategorieController::class, 'show'])->name('categorie.show')->where(['categorie' => $idRegex, 'slug' => $slugRegex]);
 Route::get('/fjkm-akv/{slug}-{souscategorie}', [SousCategorieController::class, 'show'])->name('souscategorie.show')->where(['souscategorie' => $idRegex, 'slug' => $slugRegex]);
 
