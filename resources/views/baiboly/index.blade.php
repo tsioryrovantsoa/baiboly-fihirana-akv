@@ -24,7 +24,7 @@
             <br>
             <div>
                 <span>
-                    <input type="number" name="toko" class="active textbox" placeholder="toko"
+                    <input type="number" name="toko" class="form-control" placeholder="toko"
                         value="{{ old('toko') }}">
                     @error('toko')
                         <h4 style="margin-top: 8px;">{{ $message }}</h4>

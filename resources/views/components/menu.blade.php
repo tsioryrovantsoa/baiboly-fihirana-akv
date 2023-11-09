@@ -1,11 +1,11 @@
 <div class="menu">
     <a class="toggleMenu" href="#"><img src="{{ asset('images/nav.png') }}" alt=" " /></a>
     <ul class="nav">
-        <li class="dropdown">
+        <li class="dropdown @if(request()->is('baiboly*')) active @endif">
             <a class="dropbtn" href="{{ route('baiboly.index') }}">Baiboly</a>
         </li>
         @foreach ($categories as $categorie)
-            <li class="dropdown">
+            <li class="dropdown @if(request()->is('categorie/' . $categorie->getSlug() . '*')) active @endif">
                 <a class="dropbtn"
                     href="{{ $categorie->afficher_dropdown ? '#' : route('categorie.show', ['slug' => $categorie->getSlug(), $categorie]) }}">{{ $categorie->nom }}</a>
                 @if ($categorie->afficher_dropdown)

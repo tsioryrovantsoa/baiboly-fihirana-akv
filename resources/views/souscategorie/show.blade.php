@@ -4,7 +4,7 @@
 
 @section('content')
     <p>
-        @forelse ($souscategorie->contenus as $contenu)
+        @forelse ($contenus as $contenu)
             <a href="{{ $contenu->fichierURL() }}" target="_self"
                 style="color: #000;font-family: Helvetica,sans-serif;padding:none;">
                 @if ($souscategorie->afficher_acronyme)
@@ -19,5 +19,5 @@
             <a>Tsy misy n'inona n'inona.</a>
         @endforelse
     </p>
-
+    {{ $contenus->links('pagination.pagination') }}
 @endsection

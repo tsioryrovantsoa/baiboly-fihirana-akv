@@ -21,7 +21,7 @@ class SearchController extends Controller
         });
 
         return view("search.result", [
-            'contenus' => $contenus->paginate(100),
+            'contenus' => $contenus->paginate(config('pagination.per_page')),
             'search' => $search
         ]);
     }

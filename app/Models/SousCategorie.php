@@ -24,7 +24,7 @@ class SousCategorie extends Model
 
     public function contenus()
     {
-        return $this->hasMany(Contenu::class)->orderBy('numero','asc')->orderBy('titre','asc');
+        return $this->hasMany(Contenu::class);
     }
 
     public function fichierLogo(): string
