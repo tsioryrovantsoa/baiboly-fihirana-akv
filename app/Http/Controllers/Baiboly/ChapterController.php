@@ -18,8 +18,16 @@ class ChapterController extends Controller
     public function send(BaibolyGetRequest $request)
     {
         $input = ($request->validated());
-        exec('python '.config('baiboly.baiboly_app').' ' . $input['chapter_id'] . ' ' . $input['toko'] . ' ' . $input['andininy_deb'] . ' ' . $input['andininy_fin'] . '', $output, $return_var);
+        exec('python ' . config('baiboly.baiboly_app') . ' ' . $input['chapter_id'] . ' ' . $input['toko'] . ' ' . $input['andininy_deb'] . ' ' . $input['andininy_fin'] . '', $output, $return_var);
 
-        return back()->with('success', 'Envoyer');
+        if ($return_var === 0) {
+            return back()->with('success', 'Envoyé avec succès');
+        } else {
+            $errorMessage = "";
+            foreach ($output as $line) {
+                $errorMessage .= $line . "\n";
+            }
+            return back()->with('success', $errorMessage);
+        }
     }
 }
