@@ -15,7 +15,7 @@
                 <div class="wrap">
                     <div class="blog-grids">
                         <div class="blog-left">
-                            <h2 style="color: #e8603c;
+                            <h2 style="color: #206bc4;
 						font-size: 30px;">@yield('title')</h2>
                             <br>
                             <div class="from_blog">

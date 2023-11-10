@@ -83,15 +83,15 @@ body {
 	font-family: 'bebasregular';
 }
 .logo a h1 {
-	color: #e8603c;
+	color: #206bc4;
 }
 
 .logo a h1 span{
-	color: #f3af9d;
+	color: #206bc461;
 }
 .color
 {
-	background: #f2b19c;
+	background: #206bc461;
 	width: 100%;
 	height: 50px;
 	position: absolute;
@@ -123,11 +123,11 @@ body {
 	 position:relative;
 }
 .menu li a:hover{
-	color:#e8603c;
+	color:#206bc4;
 
 }
 .menu li.active a{
-	color:#e8603c;
+	color:#206bc4;
 
 }
 .menu li i img{
@@ -151,7 +151,7 @@ body {
 }
 .toggleMenu {
     display:  none;
-    background:#e8603c;
+    background:#206bc4;
     padding:10px 10px 5px 10px;
     border-radius:2em;
     -webkit-border-radius:2em;
@@ -159,7 +159,7 @@ body {
     -o-border-radius:2em;
 }
 .toggleMenu:hover{
-	background:#f3af9d;
+	background:#206bc461;
 }
 .nav:before,
 .nav:after {
@@ -181,7 +181,7 @@ body {
 /*********content********/
 .color
 {
-	background: #f2b19c;
+	background: #206bc461;
 	width: 100%;
 	height: 50px;
 	position: absolute;
@@ -224,7 +224,7 @@ body {
 {
 	width:75%;
 	float:right;
-	color: #e8603c;
+	color: #206bc4;
 	font-size:1.3em;
 
 }
@@ -239,7 +239,7 @@ body {
 .btn {
 	color: #fff ;
 	background: #E8663C;
-	border: 2px solid  #e8603c;
+	border: 2px solid  #206bc4;
 	text-transform: uppercase;
 	padding: 0.4em 1.2em;
 	font-size: 0.89em;
@@ -263,7 +263,7 @@ body {
 }
 .heading h2{
 	float:left;
-	color: #e8603c;
+	color: #206bc4;
 	font-size:1.3em;
 }
 .heading h6{
@@ -327,13 +327,13 @@ body {
 }
 .desc h2:hover
 {
-	color:#e8603c;
+	color:#206bc4;
 }
 .desc h3
 {
 
 	font-size:13px;
-	color:#e8603c;
+	color:#206bc4;
 	margin-bottom:5px;
 	text-transform: capitalize;
 	-webkit-transition: all 0.5s ease-in-out;
@@ -414,7 +414,7 @@ button::-moz-focus-inner {
 .pop_up h2{
 	text-transform: capitalize;
 	font-size: 1.5em;
-	color: #e8603c;
+	color: #206bc4;
 	margin-bottom: 5%;
 }
 .pop_up img{
@@ -479,14 +479,14 @@ button::-moz-focus-inner {
 /*********start about**********/
 .top-heading
 {
-	background: #f2b19c;
+	background: #206bc461;
 }
 .top-heading h1{
 	text-align: left;
 	padding: 17px 25px;
 	color: #FFF;
 	font-size: 1.5em;
-	background: #e8603c;
+	background: #206bc4;
 	border-right: 10px solid #FFF;
 	border-left: 10px solid #FFF;
 }
@@ -533,7 +533,7 @@ width:100%;
 }
 .grid-left p span
 {
-	color: #e8663c;
+	color: #206bc4;
 	font-size:3em;
 }
 .grid-left span h6
@@ -647,7 +647,7 @@ width:100%;
 .grid-right-headings h2 a{
 	 width:20%;
 	float:left;
-	color: #e8603c;
+	color: #206bc4;
 	font-size:1em;
 }
 .grid-right-headings h6{
@@ -680,7 +680,7 @@ width:100%;
 	transition: all 0.5s ease-in-out;
 }
 .seach-links p a:hover{
-	color:#e8603c;
+	color:#206bc4;
 }
 .gallery ul{
 }
@@ -969,11 +969,11 @@ background:#E8663C;
 
 }
 #filters li span:hover{
-	background:#EA5A4B;
+	background:#206bc4;
 	color:#fff;
 }
 #filters li span.active {
-	background:#EA5A4B;
+	background:#206bc4;
 	color:#fff;
 }
 #portfoliolist .portfolio {
@@ -1002,7 +1002,7 @@ background:#E8663C;
 .portofolio-item h1{
 
 	padding: 20px 25px;
-	color: #e8603c;
+	color: #206bc4;
 	font-size: 1.5em;
 	margin: 1% 0%;
 }
@@ -1200,7 +1200,7 @@ background:#E8663C;
 	padding: 0.2em 0em;
 }
 .company_address h3{
-	color:#e8603c;
+	color:#206bc4;
 	font-size:1em;
 	line-height:1.8em;
 	margin-top: 4%;
@@ -1208,7 +1208,7 @@ background:#E8663C;
 	font-weight: 700;
 }
 .company_address p a{
-	color:#EA5A4B;
+	color:#206bc4;
 	-webkit-transition: 0.9s;
 	-moz-transition: 0.9s;
 	-o-transition: 0.9s;
@@ -1222,7 +1222,7 @@ background:#E8663C;
 	width: 67.3333%;
 }
 .contact-form span label{
-	color: #e8603c;
+	color: #206bc4;
 	display: block;
 	font-size: 1em;
 	padding-bottom: 5px;
@@ -1234,8 +1234,8 @@ background:#E8663C;
 	float:left;
 	width:46.999999%;
 	background: #FFFFFF;
-	border: 1px solid #e8603c;
-	color: #e8603c;
+	border: 1px solid #206bc4;
+	color: #206bc4;
 	padding: 8px;
 	display: block;
 	outline: none;
@@ -1250,14 +1250,14 @@ background:#E8663C;
 	margin-right: 10px;
 }
 .contact-form input[type="text"]:hover{
-	border:1px solid #EA5A4B;
+	border:1px solid #206bc4;
 }
 .contact-form textarea {
 	font-family: 'open_sansregular';
 	font-size: 0.85em;
 	background: #FFFFFF;
-	border: 1px solid #EA5A4B;
-	color:#e8603c;
+	border: 1px solid #206bc4;
+	color:#206bc4;
 	padding: 8px;
 	display: block;
 	width: 98%;
@@ -1274,7 +1274,7 @@ background:#E8663C;
 	height:120px;
 }
 .contact-form textarea:hover{
-	border:1px solid #EA5A4B;
+	border:1px solid #206bc4;
 }
 .contact-form input[type="submit"]{
 	font-family: 'bebasregular';
@@ -1282,8 +1282,8 @@ background:#E8663C;
 	cursor:pointer;
 	-webkit-appearance: none;
 	padding: 12px 30px;
-	border: 1px solid #e8603c;
-	background: #e8603c;
+	border: 1px solid #206bc4;
+	background: #206bc4;
 	display: inline-block;
 	font-size: 1em;
 	text-transform: uppercase;
@@ -1301,7 +1301,7 @@ background:#E8663C;
 /*********start-footer*******/
 .footer
 {
-	background: #f2b19c;
+	background: #206bc461;
 	margin-top:4em;
 }
 .footer-main
@@ -1314,7 +1314,7 @@ border-right: 10px solid #FFF;
 .footer-grids
 {
 	width:100%;
-	background: #e8663c;
+	background: #206bc4;
 	padding-bottom: 30px;
 }
 .fgrid
@@ -1532,7 +1532,7 @@ padding-bottom: 10px;
 		top: -9px;
 		border-left:10px solid rgba(0, 0, 0, 0);
 		border-right:10px solid rgba(0, 0, 0, 0);
-		border-bottom:10px solid #e8603c;
+		border-bottom:10px solid #206bc4;
 	}
     .nav li ul{
     	width:100%;

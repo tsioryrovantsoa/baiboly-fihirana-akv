@@ -88,4 +88,16 @@
     <script type="text/javascript">
         $('body').flipLightBox()
     </script>
+    <style>
+        .custom-link {
+            color: #000;
+            font-family: Helvetica, sans-serif;
+            text-decoration: none;
+        }
+
+        .custom-link:hover {
+            color: #206bc4;
+            font-weight: bold;
+        }
+    </style>
 </head>

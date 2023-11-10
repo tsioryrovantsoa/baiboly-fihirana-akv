@@ -5,8 +5,7 @@
 @section('content')
     <p>
         @forelse ($contenus as $contenu)
-            <a href="{{ $contenu->fichierURL() }}" target="_self"
-                style="color: #000;font-family: Helvetica,sans-serif;padding:none;">
+            <a href="{{ $contenu->fichierURL() }}" target="_self" class="custom-link">
                 @if ($souscategorie->afficher_acronyme)
                     {{ $souscategorie->acronyme }}
                 @endif
