@@ -19,5 +19,4 @@
             <a>Tsy misy n'inona n'inona.</a>
         @endforelse
     </p>
-
 @endsection
