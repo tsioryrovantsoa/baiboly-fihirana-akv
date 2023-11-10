@@ -1,13 +1,25 @@
 <div class="menu">
     <a class="toggleMenu" href="#"><img src="{{ asset('images/nav.png') }}" alt=" " /></a>
     <ul class="nav">
-        <li class="dropdown @if(request()->is('baiboly*')) active @endif">
+        <li class="dropdown @if (request()->is('baiboly*')) active @endif">
             <a class="dropbtn" href="{{ route('baiboly.index') }}">Baiboly</a>
         </li>
         @foreach ($categories as $categorie)
-            <li class="dropdown @if(request()->is('categorie/' . $categorie->getSlug() . '*')) active @endif">
+            @php
+                $categoryRoute = route('categorie.show', ['slug' => $categorie->getSlug(), $categorie]);
+                $isActiveCategory = request()->is("sokajy/{$categorie->getSlug()}*");
+
+                $isActiveSubCategory = false;
+                foreach ($categorie->sous_categories as $sous_categorie) {
+                    if (request()->is("fjkm-akv/{$sous_categorie->getSlug()}*")) {
+                        $isActiveSubCategory = true;
+                        break;
+                    }
+                }
+            @endphp
+            <li class="dropdown @if ($isActiveCategory || $isActiveSubCategory) active @endif">
                 <a class="dropbtn"
-                    href="{{ $categorie->afficher_dropdown ? '#' : route('categorie.show', ['slug' => $categorie->getSlug(), $categorie]) }}">{{ $categorie->nom }}</a>
+                    href="{{ $categorie->afficher_dropdown ? '#' : $categoryRoute }}">{{ $categorie->nom }}</a>
                 @if ($categorie->afficher_dropdown)
                     <div class="dropdown-content">
                         @foreach ($categorie->sous_categories as $sous_categorie)
