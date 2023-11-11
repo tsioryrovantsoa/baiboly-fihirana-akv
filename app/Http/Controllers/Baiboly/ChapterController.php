@@ -21,13 +21,13 @@ class ChapterController extends Controller
         exec('python ' . config('baiboly.baiboly_app') . ' ' . $input['chapter_id'] . ' ' . $input['toko'] . ' ' . $input['andininy_deb'] . ' ' . $input['andininy_fin'] . '', $output, $return_var);
 
         if ($return_var === 0) {
-            return back()->with('success', 'Envoyé avec succès');
+            return back()->with('success', 'Arahabaina');
         } else {
             $errorMessage = "";
             foreach ($output as $line) {
                 $errorMessage .= $line . "\n";
             }
-            return back()->with('success', $errorMessage);
+            return back()->with('error', $errorMessage);
         }
     }
 }

@@ -1,7 +1,7 @@
 <div class="wrap">
     <div class="header">
         <div class="logo">
-            <a href="ffpm.html">
+            <a href="{{route('home')}}">
                 <h1>FJKM<span>AKV</span></h1>
             </a>
         </div>

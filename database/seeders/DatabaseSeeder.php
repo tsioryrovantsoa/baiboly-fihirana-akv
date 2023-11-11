@@ -35,7 +35,8 @@ class DatabaseSeeder extends Seeder
             StkSeeder::class,
             SvmSeeder::class,
             VflSeeder::class,
-            SofiSeeder::class
+            SofiSeeder::class,
+            ImageSeeder::class
         ]);
     }
 }

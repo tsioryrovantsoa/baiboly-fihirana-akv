@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Image extends Model
 {
@@ -17,4 +18,9 @@ class Image extends Model
      * @var array
      */
     protected $fillable = ['titre', 'description', 'ordre', 'active','fichier'];
+
+    public function fichierURL(): string
+    {
+        return Storage::url('image/'.$this->fichier);
+    }
 }
