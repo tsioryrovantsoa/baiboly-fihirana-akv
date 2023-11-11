@@ -25,4 +25,16 @@ class SearchRequest extends FormRequest
             'search' => ['required']
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'search.required' => 'Ampidiro ny teny ho karohina',
+        ];
+    }
 }

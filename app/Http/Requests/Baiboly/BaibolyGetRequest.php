@@ -25,7 +25,22 @@ class BaibolyGetRequest extends FormRequest
             'chapter_id' => ['required'],
             'toko' => ['required','min:1','numeric'],
             'andininy_deb' => ['required','min:1','numeric'],
-            'andininy_fin' => ['required','min:1','numeric'],
+            'andininy_fin' => ['required','gte:andininy_deb','numeric'],
+        ];
+    }
+
+        /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'chapter_id.required' => 'Ampidiro ny boky',
+            'toko.required' => 'Ampidiro ny toko',
+            'andininy_deb.required' => 'Ampidiro ny andininy faha',
+            'andininy_fin.required' => 'Ampidiro ny andininy hatramin\'ny',
         ];
     }
 }
