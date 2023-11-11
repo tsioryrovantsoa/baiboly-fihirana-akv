@@ -16,6 +16,12 @@
     <script type="text/javascript" src="{{ asset('js/jquery.mixitup.min.js') }}"></script>
     <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('js/inpage.min.js') }}" type="text/javascript"></script>
+    <link href="{{ asset('css/inter.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <style>
+        :root {
+            --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+        }
+      </style>
     <script type="text/javascript">
         $(function() {
 
@@ -91,7 +97,7 @@
     <style>
         .custom-link {
             color: #000;
-            font-family: Helvetica, sans-serif;
+            font-family: 'Inter Var', sans-serif;
             text-decoration: none;
         }
 

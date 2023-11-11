@@ -27,7 +27,7 @@ class ChapterController extends Controller
             foreach ($output as $line) {
                 $errorMessage .= $line . "\n";
             }
-            return back()->with('error', $errorMessage);
+            return back()->with('error', $errorMessage)->withInput();
         }
     }
 }
