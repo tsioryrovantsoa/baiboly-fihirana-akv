@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Baiboly\ChapterController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\HomeController;
@@ -31,6 +32,8 @@ Route::post('/baiboly', [ChapterController::class, 'send'])->name('baiboly.send'
 Route::get('/result', [SearchController::class, 'index'])->name('search.index');
 Route::get('/sokajy/{slug}-{categorie}', [CategorieController::class, 'show'])->name('categorie.show')->where(['categorie' => $idRegex, 'slug' => $slugRegex]);
 Route::get('/fjkm-akv/{slug}-{souscategorie}', [SousCategorieController::class, 'show'])->name('souscategorie.show')->where(['souscategorie' => $idRegex, 'slug' => $slugRegex]);
+
+Route::get('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
 
 // Route::fallback(function () {
 //     return 'Still got somewhere!';
