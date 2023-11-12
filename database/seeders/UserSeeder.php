@@ -18,6 +18,13 @@ class UserSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@fjkm-akv.mg',
             'email_verified_at' => now(),
+            'password' => Hash::make('admin@fjkm-akv.mg')
+        ]);
+
+        User::create([
+            'name' => 'Fafana',
+            'email' => 'fafana@fjkm-akv.mg',
+            'email_verified_at' => now(),
             'password' => Hash::make('akvzavamaneno2023')
         ]);
     }
