@@ -23,3 +23,17 @@
         }
     </style>
 </head>
+
+<body>
+    <script src="./dist/js/demo-theme.min.js?1684106062"></script>
+    <div class="page">
+        @include('admin.include.navbar')
+        <div class="page-wrapper">
+            <!-- Page header -->
+            <div class="page-header d-print-none">
+                <div class="container-xl">
+                    @yield('content')
+                </div>
+            </div>
+        </div>
+    </div>

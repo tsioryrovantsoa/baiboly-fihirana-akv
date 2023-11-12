@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ContenuController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Baiboly\ChapterController;
 use App\Http\Controllers\CategorieController;
@@ -34,6 +35,13 @@ Route::get('/sokajy/{slug}-{categorie}', [CategorieController::class, 'show'])->
 Route::get('/fjkm-akv/{slug}-{souscategorie}', [SousCategorieController::class, 'show'])->name('souscategorie.show')->where(['souscategorie' => $idRegex, 'slug' => $slugRegex]);
 
 Route::get('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
+Route::post('/login', [AuthController::class, 'doLogin']);
+
+Route::delete('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
+
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::resource('contenu', ContenuController::class);
+});
 
 // Route::fallback(function () {
 //     return 'Still got somewhere!';
