@@ -27,6 +27,36 @@ class Contenu extends Model
 
     public function fichierURL(): string
     {
-        return Storage::url('slide/'.$this->fichier);
+        return Storage::url('slide/' . $this->fichier);
+    }
+
+    public function last_modified_file(): string
+    {
+        $cheminFichier = storage_path('app/public/slide/'.$this->fichier);
+
+        if (file_exists($cheminFichier)) {
+            $timestamp = filemtime($cheminFichier);
+            return $timestamp;
+        } else {
+            return $cheminFichier;
+        }
+    }
+    public function size(): string
+    {
+        $cheminFichier = storage_path('app/public/slide/'.$this->fichier);
+
+        if (file_exists($cheminFichier)) {
+            $fileSizeBytes = filesize($cheminFichier);
+            // $fileSizeKb = round($fileSizeBytes / 1024, 2);
+            $fileSizeMb = round($fileSizeBytes / (1024 * 1024), 2);
+            return $fileSizeMb;
+        } else {
+            return $cheminFichier;
+        }
+    }
+
+    public function getFullUrl()
+    {
+        return storage_path('app/public/slide/'.$this->fichier);
     }
 }

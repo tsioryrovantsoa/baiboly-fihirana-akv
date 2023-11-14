@@ -40,6 +40,10 @@ Route::post('/login', [AuthController::class, 'doLogin']);
 Route::delete('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::get('/', function () {
+        return to_route('admin.contenu.index');
+    });
+    Route::post('/open', [ContenuController::class, 'open'])->name('open.powerpoint');
     Route::resource('contenu', ContenuController::class);
 });
 
