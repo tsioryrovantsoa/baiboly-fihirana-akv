@@ -32,18 +32,18 @@ class Contenu extends Model
 
     public function last_modified_file(): string
     {
-        $cheminFichier = storage_path('app/public/slide/'.$this->fichier);
+        $cheminFichier = storage_path('app/public/slide/' . $this->fichier);
 
         if (file_exists($cheminFichier)) {
             $timestamp = filemtime($cheminFichier);
-            return $timestamp;
+            return date('Y-m-d h:i:s', $timestamp);
         } else {
-            return $cheminFichier;
+            return null;
         }
     }
     public function size(): string
     {
-        $cheminFichier = storage_path('app/public/slide/'.$this->fichier);
+        $cheminFichier = storage_path('app/public/slide/' . $this->fichier);
 
         if (file_exists($cheminFichier)) {
             $fileSizeBytes = filesize($cheminFichier);
@@ -51,12 +51,19 @@ class Contenu extends Model
             $fileSizeMb = round($fileSizeBytes / (1024 * 1024), 2);
             return $fileSizeMb;
         } else {
-            return $cheminFichier;
+            return null;
         }
+    }
+
+    public function getFileInfo()
+    {
+        $this->fichier_date = $this->last_modified_file();
+        $this->fichier_taille = $this->size();
+        $this->save();
     }
 
     public function getFullUrl()
     {
-        return storage_path('app/public/slide/'.$this->fichier);
+        return storage_path('app/public/slide/' . $this->fichier);
     }
 }

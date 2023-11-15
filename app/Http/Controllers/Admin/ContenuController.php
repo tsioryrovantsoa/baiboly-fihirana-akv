@@ -15,9 +15,6 @@ class ContenuController extends Controller
      */
     public function index()
     {
-        $dateString = '2023-11-03 00:00:00';
-        $timestamp = strtotime($dateString);
-
         $contenus = Contenu::with('sous_categorie')->get();
 
         $contenus = $contenus->sortByDesc(function ($contenu) {

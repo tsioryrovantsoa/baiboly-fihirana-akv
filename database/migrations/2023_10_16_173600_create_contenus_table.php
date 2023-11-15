@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('titre');
             $table->integer('numero')->nullable();
             $table->string('fichier');
+            $table->timestamp('fichier_date')->nullable();
+            $table->decimal('fichier_taille', 10, 2)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
