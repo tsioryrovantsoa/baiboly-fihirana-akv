@@ -18,7 +18,11 @@ class Contenu extends Model
      *
      * @var array
      */
-    protected $fillable = ['sous_categorie_id', 'titre', 'ordre', 'fichier'];
+    protected $fillable = ['sous_categorie_id', 'titre', 'ordre', 'fichier','fichier_date', 'fichier_taille'];
+
+    protected $casts = [
+        'fichier_date' => 'datetime:Y-m-d',
+    ];
 
     public function sous_categorie(): BelongsTo
     {

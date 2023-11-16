@@ -51,7 +51,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($paginatedContenus as $contenu)
+                    @foreach ($contenus as $contenu)
                         <tr @class(['table-danger' => $contenu->size() > 0.3])>
                             <td>
                                 {{ $contenu->sous_categorie->acronyme }}
@@ -66,13 +66,13 @@
                                 <small>{{ $contenu->fichier }}</small>
                             </td>
                             <td>
-                                <small>{{ date('d M Y h:i:s', $contenu->last_modified_file()) }}</small>
+                                <small>{{ $contenu->fichier_date->isoFormat('DD MMM YYYY HH:mm:ss') }}</small>
                             </td>
                             <td>
-                                <small>{{ $contenu->size() }} Mo</small>
+                                <small>{{ $contenu->fichier_taille }} Mo</small>
                             </td>
                             <td>
-                                <small>{{ $contenu->updated_at->isoFormat('DD MMM YYYY HH:m:s') }}</small>
+                                <small>{{ $contenu->updated_at->isoFormat('DD MMM YYYY HH:mm:ss') }}</small>
                             </td>
                             <td>
                                 <div class="d-flex gap-2">
@@ -125,8 +125,8 @@
                     @endforeach
                 </tbody>
             </table>
-            @if ($paginatedContenus->hasPages())
-                <div class="mt-3 px-3"> {{ $paginatedContenus->links() }}</div>
+            @if ($contenus->hasPages())
+                <div class="mt-3 px-3"> {{ $contenus->links() }}</div>
             @endif
         </div>
     </div>

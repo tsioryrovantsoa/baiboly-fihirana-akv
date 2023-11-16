@@ -15,40 +15,37 @@ class ContenuController extends Controller
      */
     public function index()
     {
-        $contenus = Contenu::with('sous_categorie')->get();
-
-        $contenus = $contenus->sortByDesc(function ($contenu) {
-            return $contenu->last_modified_file();
-        });
-
-        $currentPage = LengthAwarePaginator::resolveCurrentPage();
-        $perPage = config('pagination.per_page');
-        $currentPageItems = $contenus->slice(($currentPage - 1) * $perPage, $perPage)->all();
-        $paginatedContenus = new LengthAwarePaginator($currentPageItems, count($contenus), $perPage);
-        $paginatedContenus->withPath('/admin/contenu');
+        $contenus = Contenu::with('sous_categorie')->paginate(config('pagination.per_page'));
 
         $souscategories = SousCategorie::all();
 
-        return view('admin.contenu.index', compact('paginatedContenus', 'souscategories'));
+        return view('admin.contenu.index', compact('contenus', 'souscategories'));
     }
 
     public function open()
-    {
+{
+    // $filePath = escapeshellarg(request('filePath'));
+    $filePath = (request('filePath'));
+    $command = 'start /B python F:\\Projet\\Perso\\baiboly-to-powerpoint\\open.py ' . $filePath;
 
-        $escapedFilePath = escapeshellarg(request('filePath'));
+    // Lancer la commande en arrière-plan
+    pclose(popen($command, 'r'));
 
-        exec('python F:\\Projet\\Perso\\baiboly-to-powerpoint\\open.py ' . $escapedFilePath . '', $output, $return_var);
+    // Attendre 5 secondes
+    sleep(5);
 
-        if ($return_var === 0) {
-            return back()->with('success', 'Arahabaina')->withInput();
-        } else {
-            $errorMessage = "";
-            foreach ($output as $line) {
-                $errorMessage .= $line . "\n";
-            }
-            return back()->with('error', $errorMessage)->withInput();
-        }
+    // Terminer le processus s'il est toujours en cours après le délai
+    exec("tasklist /FI \"IMAGENAME eq python3.11.exe\" /FO CSV 2>NUL | findstr /R /C:python3.11.exe", $processState);
+    if (!empty($processState)) {
+        exec("taskkill /F /IM python3.11.exe");
+        return back()->with('error', 'Le délai d\'attente est dépassé');
     }
+
+    // La commande a réussi
+    return back()->with('success', 'Arahabaina');
+}
+
+
 
 
     /**
