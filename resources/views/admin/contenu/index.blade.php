@@ -1,6 +1,6 @@
 @extends('admin.layout.layout')
 
-@section('title', 'Bonjour')
+@section('title', 'Contenu')
 
 @section('content')
     <form class="card mb-2">
@@ -41,18 +41,18 @@
             <table class="table table-vcenter card-table table-striped">
                 <thead>
                     <tr>
-                        <th class="w-1">Sous Categorie</th>
-                        <th class="w-1">Numero - Titre</th>
-                        <th class="w-1">Fichier</th>
-                        <th class="w-5">Date fichier</th>
-                        <th class="w-1">Taille</th>
-                        <th class="w-5">Date</th>
-                        <th class="w-1"></th>
+                        <th>Sous Categorie</th>
+                        <th>Numero - Titre</th>
+                        <th>Fichier</th>
+                        <th>Date fichier</th>
+                        <th>Taille</th>
+                        <th>Date</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($contenus as $contenu)
-                        <tr @class(['table-danger' => $contenu->size() > 0.3])>
+                        <tr @class(['table-danger' => $contenu->fichier_taille > 0.3])>
                             <td>
                                 {{ $contenu->sous_categorie->acronyme }}
                             </td>
@@ -63,16 +63,16 @@
                                 {{ $contenu->titre }}
                             </td>
                             <td class="text-muted">
-                                <small>{{ $contenu->fichier }}</small>
+                                <small>{{ $contenu->fichier ?? '-' }}</small>
                             </td>
                             <td>
-                                <small>{{ $contenu->fichier_date->isoFormat('DD MMM YYYY HH:mm:ss') }}</small>
+                                <small>{{ $contenu->fichier_date?->isoFormat('DD MMM YYYY HH:mm:ss') ?? '-' }}</small>
                             </td>
                             <td>
-                                <small>{{ $contenu->fichier_taille }} Mo</small>
+                                <small>{{ $contenu->fichier_taille ?? '-' }} Mo</small>
                             </td>
                             <td>
-                                <small>{{ $contenu->updated_at->isoFormat('DD MMM YYYY HH:mm:ss') }}</small>
+                                <small>{{ $contenu->updated_at?->isoFormat('DD MMM YYYY HH:mm:ss') ?? '-' }}</small>
                             </td>
                             <td>
                                 <div class="d-flex gap-2">

@@ -11,8 +11,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // ContenuInfoFile::dispatch();
-        ContenuInfoLatest::dispatch();
+        ContenuInfoFile::dispatch();
+        //ContenuInfoLatest::dispatch();
 
         return view("home.index",[
             'images' => Image::inRandomOrder()->get()

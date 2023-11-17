@@ -34,7 +34,7 @@ class Contenu extends Model
         return Storage::url('slide/' . $this->fichier);
     }
 
-    public function last_modified_file(): string
+    public function last_modified_file(): string|null
     {
         $cheminFichier = storage_path('app/public/slide/' . $this->fichier);
 
@@ -45,7 +45,7 @@ class Contenu extends Model
             return null;
         }
     }
-    public function size(): string
+    public function size(): string|null
     {
         $cheminFichier = storage_path('app/public/slide/' . $this->fichier);
 

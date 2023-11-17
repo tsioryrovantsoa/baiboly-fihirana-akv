@@ -15,7 +15,7 @@ class ChoraleSeeder extends Seeder
     {
         $chorales =
             [
-                ["sous_categorie_id" => 24, "titre" => "Misaora", "fichier" => "CHORALE -  Misaora.pptx"],
+                ["sous_categorie_id" => 24, "titre" => "Misaora", "fichier" => "CHORALE - Misaora.pptx"],
                 ["sous_categorie_id" => 24, "titre" => "Fagnahy o", "fichier" => "CHORALE - Fagnahy o.pptx"],
                 ["sous_categorie_id" => 24, "titre" => "Modia", "fichier" => "CHORALE - Modia.pptx"],
                 ["sous_categorie_id" => 24, "titre" => "Tsara Andriamanitra", "fichier" => "CHORALE - Tsara Andriamanitra.pptx"],
