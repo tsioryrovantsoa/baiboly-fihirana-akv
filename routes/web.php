@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\Admin\ContenuController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Baiboly\ChapterController;
-use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\Admin\ContenuController;
 use App\Http\Controllers\SousCategorieController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Baiboly\ChapterController;
+use App\Http\Controllers\Admin\CategorieController as AdminCategorieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     });
     Route::post('/open', [ContenuController::class, 'open'])->name('open.powerpoint');
     Route::resource('contenu', ContenuController::class);
+    Route::resource('categorie', AdminCategorieController::class);
 });
 
 // Route::fallback(function () {
