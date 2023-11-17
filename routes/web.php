@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ContenuController;
 use App\Http\Controllers\SousCategorieController;
 use App\Http\Controllers\Baiboly\ChapterController;
 use App\Http\Controllers\Admin\CategorieController as AdminCategorieController;
+use App\Http\Controllers\Admin\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::post('/open', [ContenuController::class, 'open'])->name('open.powerpoint');
     Route::resource('contenu', ContenuController::class);
     Route::resource('categorie', AdminCategorieController::class);
+    Route::resource('image', ImageController::class);
+
 });
 
 // Route::fallback(function () {
