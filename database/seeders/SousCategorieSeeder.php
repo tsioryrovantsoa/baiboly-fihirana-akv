@@ -36,7 +36,7 @@ class SousCategorieSeeder extends Seeder
             ['categorie_id' => 3, 'nom' => "SAmpana FIFohazana", 'acronyme' => "SAFIF", 'afficher_acronyme' => false, 'numero_requis' => false, 'logo' => 'safif.jpg'],
             ['categorie_id' => 3, 'nom' => "SAmpana MPAnazava sy TIly", 'acronyme' => "SAMPATI", 'afficher_acronyme' => false, 'numero_requis' => false, 'logo' => 'sampati.jpg'],
             ['categorie_id' => 3, 'nom' => "Fikambanan'ny Diakona sy Loholona", 'acronyme' => "FDL", 'afficher_acronyme' => false, 'numero_requis' => false],
-            ['categorie_id' => 3, 'nom' => "Sekoly Alahady", 'acronyme' => "SA", 'afficher_acronyme' => false, 'numero_requis' => false, 'logo' => 'sekoly alahady.jpg'],
+            ['categorie_id' => 3, 'nom' => "Sekoly Alahady", 'acronyme' => "SA", 'afficher_acronyme' => false, 'numero_requis' => false, 'logo' => 'sekoly-alahady.jpg'],
             ['categorie_id' => 3, 'nom' => "Chorale Ny Akon'I Kristy Velona", 'acronyme' => "CHORALE", 'afficher_acronyme' => false, 'numero_requis' => false],
             ['categorie_id' => 3, 'nom' => "Sekoly Olom-bavaka sy FInoana", 'acronyme' => "SOFI", 'afficher_acronyme' => false, 'numero_requis' => false],
         ];
