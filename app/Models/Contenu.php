@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Contenu extends Model
 {
@@ -18,7 +19,7 @@ class Contenu extends Model
      *
      * @var array
      */
-    protected $fillable = ['sous_categorie_id', 'titre', 'ordre', 'fichier','fichier_date', 'fichier_taille'];
+    protected $fillable = ['sous_categorie_id', 'titre', 'ordre', 'fichier', 'fichier_date', 'fichier_taille'];
 
     protected $casts = [
         'fichier_date' => 'datetime:Y-m-d',
@@ -69,5 +70,31 @@ class Contenu extends Model
     public function getFullUrl()
     {
         return storage_path('app/public/slide/' . $this->fichier);
+    }
+
+    public function scopeApplyFilters(Builder $query, $orderBy, $order, $search): Builder
+    {
+        $validColumns = [
+            'titre',
+            'fichier',
+            'fichier_date',
+            'fichier_taille',
+            'updated_at'
+        ];
+
+        if (!in_array($orderBy, $validColumns)) {
+            $orderBy = 'updated_at';
+        }
+        $query->orderBy($orderBy, $order);
+
+        if (!empty($search)) {
+            $query->where(function ($query) use ($search) {
+                $query->where('titre', 'like', '%' . $search . '%')
+                    ->orWhere('numero', 'like', '%' . $search . '%')
+                    ->orWhere('fichier', 'like', '%' . $search . '%');
+            });
+        };
+
+        return $query;
     }
 }

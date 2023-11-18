@@ -8,10 +8,10 @@
             <div class="row">
                 <div class="col-4">
                     <div class="form-group">
-                        <label for="is_indexed" class="form-label">Sous Categorie :</label>
-                        <select name="is_indexed" id="is_indexed" class="form-select">
+                        <label for="sous_categorie" class="form-label">Sous Categorie :</label>
+                        <select name="sous_categorie" id="sous_categorie" class="form-select">
                             <option value="" class="text-secondary"
-                                {{ request('is_indexed') === '' ? 'selected' : '' }}>
+                                {{ request('sous_categorie') === '' ? 'selected' : '' }}>
                                 -- Sélectionnez --</option>
                             @foreach ($souscategories as $souscategorie)
                                 <option value="{{ $souscategorie->id }}" class="text-secondary">{{ $souscategorie->nom }}
@@ -22,15 +22,15 @@
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label for="title" class="form-label">Titre ou Numero ou Fichier :</label>
-                        <input type="text" name="title" id="" placeholder="Titre ou Numero ou Fichier"
-                            class="form-control">
+                        <label for="search" class="form-label">Titre ou Numero ou Fichier :</label>
+                        <input type="text" name="search" id="" value="{{ $search ?? '' }}"
+                            placeholder="Titre ou Numero ou Fichier" class="form-control">
                     </div>
                 </div>
 
                 <div class="col-3 align-self-end">
                     <button class="btn btn-primary">Filtrer</button>
-                    <a href="" class="btn btn-secondary">Reinitialiser</a>
+                    <a href="{{ route('admin.contenu.index') }}" class="btn btn-secondary">Reinitialiser</a>
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($contenus as $contenu)
+                    @forelse ($contenus as $contenu)
                         <tr @class(['table-danger' => $contenu->fichier_taille > 0.3])>
                             <td>
                                 {{ $contenu->sous_categorie->acronyme }}
@@ -122,7 +122,13 @@
                                 </div>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="6" class="text-center">
+                                Tsy misy n'inona n'inona
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
             @if ($contenus->hasPages())
