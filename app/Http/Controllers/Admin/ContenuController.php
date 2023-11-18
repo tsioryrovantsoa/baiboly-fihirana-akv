@@ -15,7 +15,7 @@ class ContenuController extends Controller
      */
     public function index(Request $request)
     {
-        $orderBy = $request->input('sort', 'fichier_date');
+        $orderBy = $request->input('sort_by', 'fichier_date');
         $order = $request->input('order', 'desc');
         $perPage = $request->input('per_page', config('pagination.per_page'));
         $search = $request->input('search', '');

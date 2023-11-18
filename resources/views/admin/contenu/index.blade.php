@@ -41,12 +41,47 @@
             <table class="table table-vcenter card-table table-striped">
                 <thead>
                     <tr>
-                        <th>Sous Categorie</th>
-                        <th>Numero - Titre</th>
-                        <th>Fichier</th>
-                        <th>Date fichier</th>
-                        <th>Taille</th>
-                        <th>Date</th>
+
+                        @php
+                            $nonSortableColumns = ['sous_categorie'];
+                        @endphp
+
+                        @foreach (['sous_categorie' => 'Sous Categorie', 'titre' => 'Numero - Titre', 'fichier' => 'Fichier', 'fichier_date' => 'Date fichier', 'fichier_taille' => 'Taille', 'updated_at' => 'Date'] as $key => $label)
+                            <th
+                                class="{{ in_array($key, $nonSortableColumns) ? 'not-sortable' : ((request('sort_by') == $key && request('order') == 'asc') || (request('sort_by') == $key && request('order') == 'desc') ? 'text-primary' : '') }}">
+                                {{ $label }}
+                                @if (!in_array($key, $nonSortableColumns))
+                                    <a href="{{ request()->fullUrlWithQuery(['sort_by' => $key, 'order' => request('sort_by') == $key && request('order') == 'asc' ? 'desc' : 'asc']) }}"
+                                        class="text-decoration-none ms-2" style="color: inherit">
+                                        @if (request('sort_by') == $key && request('order') == 'desc')
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-sort-descending" width="15"
+                                                height="15" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M4 6l9 0" />
+                                                <path d="M4 12l7 0" />
+                                                <path d="M4 18l7 0" />
+                                                <path d="M15 15l3 3l3 -3" />
+                                                <path d="M18 6l0 12" />
+                                            </svg>
+                                        @else
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-sort-ascending" width="15"
+                                                height="15" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M4 6l7 0" />
+                                                <path d="M4 12l7 0" />
+                                                <path d="M4 18l9 0" />
+                                                <path d="M15 9l3 -3l3 3" />
+                                                <path d="M18 6l0 12" />
+                                            </svg>
+                                        @endif
+                                    </a>
+                                @endif
+                            </th>
+                        @endforeach
                         <th></th>
                     </tr>
                 </thead>
@@ -106,9 +141,9 @@
                                     </a>
                                     <a href="#" class="btn btn-sm btn-outline-danger">
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-trash-filled" width="24" height="24"
-                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round">
+                                            class="icon icon-tabler icon-tabler-trash-filled" width="24"
+                                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                            fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <path
                                                 d="M20 6a1 1 0 0 1 .117 1.993l-.117 .007h-.081l-.919 11a3 3 0 0 1 -2.824 2.995l-.176 .005h-8c-1.598 0 -2.904 -1.249 -2.992 -2.75l-.005 -.167l-.923 -11.083h-.08a1 1 0 0 1 -.117 -1.993l.117 -.007h16z"
