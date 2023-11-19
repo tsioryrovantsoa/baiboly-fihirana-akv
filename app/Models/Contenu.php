@@ -46,6 +46,33 @@ class Contenu extends Model
             return null;
         }
     }
+
+    public function get_last_modified_file(string $filename): string|null
+    {
+        $cheminFichier = storage_path('app/public/slide/' . $filename);
+
+        if (file_exists($cheminFichier)) {
+            $timestamp = filemtime($cheminFichier);
+            return date('Y-m-d h:i:s', $timestamp);
+        } else {
+            return null;
+        }
+    }
+
+    public function get_size(string $filename): string|null
+    {
+        $cheminFichier = storage_path('app/public/slide/' . $filename);
+
+        if (file_exists($cheminFichier)) {
+            $fileSizeBytes = filesize($cheminFichier);
+            // $fileSizeKb = round($fileSizeBytes / 1024, 2);
+            $fileSizeMb = round($fileSizeBytes / (1024 * 1024), 2);
+            return $fileSizeMb;
+        } else {
+            return null;
+        }
+    }
+
     public function size(): string|null
     {
         $cheminFichier = storage_path('app/public/slide/' . $this->fichier);

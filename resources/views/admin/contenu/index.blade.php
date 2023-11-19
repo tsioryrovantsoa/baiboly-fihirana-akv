@@ -28,9 +28,18 @@
                     </div>
                 </div>
 
-                <div class="col-3 align-self-end">
+                <div class="col-5 align-self-end">
                     <button class="btn btn-primary">Filtrer</button>
                     <a href="{{ route('admin.contenu.index') }}" class="btn btn-secondary">Reinitialiser</a>
+                    <a href="{{ route('admin.contenu.create') }}" class="btn btn-success"><svg
+                            xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M12 5l0 14"></path>
+                            <path d="M5 12l14 0"></path>
+                        </svg>
+                        Nouveau Contenu</a>
                 </div>
             </div>
         </div>
@@ -128,7 +137,8 @@
                                             </svg>
                                         </button>
                                     </form>
-                                    <a href="#" class="btn btn-sm btn-outline-primary">
+                                    <a href="{{ route('admin.contenu.edit', ['contenu' => $contenu]) }}"
+                                        class="btn btn-sm btn-outline-primary">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             class="icon icon-tabler icon-tabler-eye-filled" width="24" height="24"
                                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -139,21 +149,26 @@
                                                 stroke-width="0" fill="currentColor"></path>
                                         </svg>
                                     </a>
-                                    <a href="#" class="btn btn-sm btn-outline-danger">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-trash-filled" width="24"
-                                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                            fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path
-                                                d="M20 6a1 1 0 0 1 .117 1.993l-.117 .007h-.081l-.919 11a3 3 0 0 1 -2.824 2.995l-.176 .005h-8c-1.598 0 -2.904 -1.249 -2.992 -2.75l-.005 -.167l-.923 -11.083h-.08a1 1 0 0 1 -.117 -1.993l.117 -.007h16z"
-                                                stroke-width="0" fill="currentColor"></path>
-                                            <path
-                                                d="M14 2a2 2 0 0 1 2 2a1 1 0 0 1 -1.993 .117l-.007 -.117h-4l-.007 .117a1 1 0 0 1 -1.993 -.117a2 2 0 0 1 1.85 -1.995l.15 -.005h4z"
-                                                stroke-width="0" fill="currentColor"></path>
-                                        </svg>
-                                    </a>
-
+                                    <form action="{{ route('admin.contenu.destroy', $contenu) }}" method="POST"
+                                        onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer');">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-sm btn-outline-danger" type="submit">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-trash-filled" width="24"
+                                                height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                stroke="currentColor" fill="none" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path
+                                                    d="M20 6a1 1 0 0 1 .117 1.993l-.117 .007h-.081l-.919 11a3 3 0 0 1 -2.824 2.995l-.176 .005h-8c-1.598 0 -2.904 -1.249 -2.992 -2.75l-.005 -.167l-.923 -11.083h-.08a1 1 0 0 1 -.117 -1.993l.117 -.007h16z"
+                                                    stroke-width="0" fill="currentColor"></path>
+                                                <path
+                                                    d="M14 2a2 2 0 0 1 2 2a1 1 0 0 1 -1.993 .117l-.007 -.117h-4l-.007 .117a1 1 0 0 1 -1.993 -.117a2 2 0 0 1 1.85 -1.995l.15 -.005h4z"
+                                                    stroke-width="0" fill="currentColor"></path>
+                                            </svg>
+                                        </button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
