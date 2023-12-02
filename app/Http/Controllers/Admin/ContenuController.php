@@ -22,12 +22,22 @@ class ContenuController extends Controller
         $order = $request->input('order', 'desc');
         $perPage = $request->input('per_page', config('pagination.per_page'));
         $search = $request->input('search', '');
+        $sous_categorie = $request->input('sous_categorie');
+        // dd($sous_categorie);
 
-        $contenus = Contenu::with('sous_categorie')->applyFilters($orderBy, $order, $search)->paginate(config('pagination.per_page'));
+        $contenus = Contenu::with('sous_categorie')->applyFilters($orderBy, $order, $search);
+        if (!empty($sous_categorie)) {
+            $contenus->whereRelation('sous_categorie', 'id', $sous_categorie);
+        }
+
 
         $souscategories = SousCategorie::all();
 
-        return view('admin.contenu.index', compact('contenus', 'souscategories', 'search'));
+        return view('admin.contenu.index', [
+            'contenus' => $contenus->paginate(config('pagination.per_page')),
+            'souscategories' => $souscategories,
+            'search' => $search
+        ]);
     }
 
     public function open()

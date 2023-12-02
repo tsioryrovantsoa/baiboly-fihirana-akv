@@ -52,17 +52,14 @@
                         <div class="mb-3">
                             <div class="form-label">Fichier</div>
                             <input type="file" class="form-control" name="fichier">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4">
-                <div class="row">
-                    <div class="col-md-6 col-xl-12">
-                        <div class="mb-3">
-                            <iframe src = '/ViewerJS/#../storage/slide/test.pdf' width='400' height='300' allowfullscreen webkitallowfullscreen></iframe>
-                        </div>
+                            <span class="form-check-description">
+                                Fichier actuel :
+                                <a href="{{ $contenu->fichierURL() }}" target="_self" class="custom-link">
+                                    {{ $contenu->fichierURL() }}
+                                </a><br />
+                            </span>
 
+                        </div>
                     </div>
                 </div>
             </div>
