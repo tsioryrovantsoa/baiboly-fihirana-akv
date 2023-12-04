@@ -49,6 +49,7 @@
                             <input type="text" class="form-control" name="titre"
                                 value="{{ $contenu->titre ?? old('titre') }}">
                         </div>
+                        @isset($contenu)
                         <div class="mb-3">
                             <div class="form-label">Fichier</div>
                             <input type="file" class="form-control" name="fichier">
@@ -58,8 +59,8 @@
                                     {{ $contenu->fichierURL() }}
                                 </a><br />
                             </span>
-
                         </div>
+                        @endisset
                     </div>
                 </div>
             </div>
