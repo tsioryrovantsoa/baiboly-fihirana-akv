@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Http\Requests\Contenu\StoreContenuRequest;
 use App\Http\Requests\Contenu\UpdateContenuRequest;
+use Exception;
 
 class ContenuController extends Controller
 {
@@ -109,7 +110,7 @@ class ContenuController extends Controller
      */
     public function edit(Contenu $contenu)
     {
-        return view('admin.contenu.edit', ['contenu' => $contenu, 'souscategories' => SousCategorie::all()]);
+        return view('admin.contenu.edit', ['contenu' => $contenu->load('sous_categorie'), 'souscategories' => SousCategorie::all()]);
     }
 
     /**
@@ -117,32 +118,42 @@ class ContenuController extends Controller
      */
     public function update(UpdateContenuRequest $request, Contenu $contenu)
     {
-        $data = $request->validated();
+        try {
+            $data = $request->validated();
 
-        if ($request->hasFile('fichier')) {
-            $sous_categorie = SousCategorie::findOrFail($data['sous_categorie_id']);
-            $fichier = $request->file('fichier');
-            $extension = $fichier->getClientOriginalExtension();
-            $filename = $sous_categorie->acronyme . ' - ' . $data['titre'] . '.' . $extension;
-
-            if ($sous_categorie->numero_requis) {
-                $filename = $sous_categorie->acronyme . ' ' . $data['numero'] . ' - ' . $data['titre'] . '.' . $extension;
+            if ($data['numero']) {
+                $count = Contenu::where('numero', $data['numero'])->where('sous_categorie_id', $data['sous_categorie_id'])->count();
+                if ($count >= 2) {
+                    throw new Exception("Tsy mahazo misy contenu mihoatra'anaky roa mitovy numero. Mba ovaina ny iray");
+                }
             }
 
-            $fichier->storeAs('public/slide', $filename);
-            $data['fichier'] = $filename;
-            $data['fichier_date'] = $contenu->get_last_modified_file($filename);
-            $data['fichier_taille'] = $contenu->get_size($filename);
+            if ($request->hasFile('fichier')) {
+                $sous_categorie = SousCategorie::findOrFail($data['sous_categorie_id']);
+                $fichier = $request->file('fichier');
+                $extension = $fichier->getClientOriginalExtension();
+                $filename = $sous_categorie->acronyme . ' - ' . $data['titre'] . '.' . $extension;
 
-            // if ($contenu->fichier && Storage::exists('public/slide/' . $contenu->fichier)) {
-            //     Storage::delete('public/slide/' . $contenu->fichier);
-            // }
+                if ($sous_categorie->numero_requis) {
+                    $filename = $sous_categorie->acronyme . ' ' . $data['numero'] . ' - ' . $data['titre'] . '.' . $extension;
+                }
+
+                $fichier->storeAs('public/slide', $filename);
+                $data['fichier'] = $filename;
+                $data['fichier_date'] = $contenu->get_last_modified_file($filename);
+                $data['fichier_taille'] = $contenu->get_size($filename);
+
+                // if ($contenu->fichier && Storage::exists('public/slide/' . $contenu->fichier)) {
+                //     Storage::delete('public/slide/' . $contenu->fichier);
+                // }
+            }
+
+            $contenu->update($data);
+
+            return redirect()->route('admin.contenu.index')->with('success', 'Contenu mis à jour avec succès');
+        } catch (\Throwable $th) {
+            return back()->with('success', $th->getMessage())->withInput();
         }
-
-        // Mise à jour des données du contenu existant
-        $contenu->update($data);
-
-        return redirect()->route('admin.contenu.index')->with('success', 'Contenu mis à jour avec succès');
     }
 
     /**
@@ -153,5 +164,24 @@ class ContenuController extends Controller
         Storage::move('public/slide/' . $contenu->fichier, 'public/slide/delete/' . $contenu->fichier);
         $contenu->delete();
         return to_route('admin.contenu.index')->with('success', 'Supprimer avec success');
+    }
+
+    public function getRequisNumero(Request $request)
+    {
+        $sousCategorieId = $request->input('sous_categorie_id');
+        $sousCategorie = SousCategorie::findOrFail($sousCategorieId);
+
+        return response()->json(['requis_numero' => $sousCategorie->numero_requis]);
+    }
+
+    public function getProchainNumero(Request $request)
+    {
+        $sousCategorieId = $request->input('sous_categorie_id');
+
+        // Trouver le prochain numéro en fonction de la sous-catégorie
+        $prochainNumero = Contenu::where('sous_categorie_id', $sousCategorieId)->max('numero') + 1;
+
+        // Renvoyer le prochain numéro au format JSON
+        return response()->json(['prochain_numero' => $prochainNumero]);
     }
 }

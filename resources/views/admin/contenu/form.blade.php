@@ -50,16 +50,16 @@
                                 value="{{ $contenu->titre ?? old('titre') }}">
                         </div>
                         @isset($contenu)
-                        <div class="mb-3">
-                            <div class="form-label">Fichier</div>
-                            <input type="file" class="form-control" name="fichier">
-                            <span class="form-check-description">
-                                Fichier actuel :
-                                <a href="{{ $contenu->fichierURL() }}" target="_self" class="custom-link">
-                                    {{ $contenu->fichierURL() }}
-                                </a><br />
-                            </span>
-                        </div>
+                            <div class="mb-3">
+                                <div class="form-label">Fichier</div>
+                                <input type="file" class="form-control" name="fichier">
+                                <span class="form-check-description">
+                                    Fichier actuel :
+                                    <a href="{{ $contenu->fichierURL() }}" target="_self" class="custom-link">
+                                        {{ $contenu->fichierURL() }}
+                                    </a><br />
+                                </span>
+                            </div>
                         @endisset
                     </div>
                 </div>
@@ -69,7 +69,79 @@
     <div class="card-footer text-end">
         <div class="d-flex">
             <a href="{{ route('admin.contenu.index') }}" class="btn btn-link">Retour</a>
-            <button type="submit" class="btn btn-primary ms-auto">Creer</button>
+            <button type="submit" class="btn btn-primary ms-auto">{{isset($contenu) ? 'Modifier' : 'Creer'}}</button>
         </div>
     </div>
 </form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Désactiver le champ numéro s'il s'agit d'un ajout
+        const contenuId = "{{ isset($contenu) ? $contenu->id : '' }}";
+        const requis_sous =
+            "{{ isset($contenu->sous_categorie->numero_requis) ? $contenu->sous_categorie->numero_requis : false }}"
+
+        if (contenuId === '') {
+            $('input[name="numero"]').prop('disabled', true);
+        }
+
+        if (requis_sous == false) {
+            const numeroInput = $('input[name="numero"]');
+            numeroInput.val('').hide();
+            numeroInput.prev('label').hide(); // Masquer le label
+        }
+
+        // Écouter les changements de la sous-catégorie
+        $('select[name="sous_categorie_id"]').change(function() {
+            const sousCategorieId = $(this).val();
+
+            // Vérifier si la valeur de la sous-catégorie n'est pas vide
+            if (sousCategorieId !== '') {
+                // Effectuer une requête AJAX pour obtenir l'attribut requis_numero
+                $.ajax({
+                    url: '/get-requis-numero', // Remplacez par l'URL de votre endpoint
+                    method: 'GET',
+                    data: {
+                        sous_categorie_id: sousCategorieId
+                    },
+                    success: function(response) {
+                        const requisNumero = response.requis_numero;
+
+                        // Si requis_numero est vrai, effectuer une autre requête pour obtenir le prochain numéro
+                        if (requisNumero) {
+                            $.ajax({
+                                url: '/get-prochain-numero', // Remplacez par l'URL appropriée
+                                method: 'GET',
+                                data: {
+                                    sous_categorie_id: sousCategorieId
+                                },
+                                success: function(response) {
+                                    const prochainNumero = response
+                                        .prochain_numero;
+
+                                    // Mettre à jour le champ "numero" avec la valeur appropriée
+                                    const numeroInput = $(
+                                        'input[name="numero"]');
+                                    numeroInput.val(prochainNumero).show();
+                                    numeroInput.prev('label')
+                                        .show(); // Afficher le label
+                                }
+                            });
+                        } else {
+                            // Si requis_numero est faux, vider et masquer le champ "numero" et son label
+                            const numeroInput = $('input[name="numero"]');
+                            numeroInput.val('').hide();
+                            numeroInput.prev('label').hide(); // Masquer le label
+                        }
+                    }
+                });
+            } else {
+                // Si la valeur de la sous-catégorie est vide, vider et masquer le champ "numero" et son label
+                const numeroInput = $('input[name="numero"]');
+                numeroInput.val('').hide();
+                numeroInput.prev('label').hide(); // Masquer le label
+            }
+        });
+    });
+</script>

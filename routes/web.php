@@ -53,6 +53,10 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('souscategorie', AdminSousCategorieController::class);
 });
 
+Route::get('/get-requis-numero', [ContenuController::class, 'getRequisNumero']);
+Route::get('/get-prochain-numero', [ContenuController::class, 'getProchainNumero']);
+
+
 // Route::fallback(function () {
 //     return 'Still got somewhere!';
 // });

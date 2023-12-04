@@ -19,7 +19,7 @@ class Contenu extends Model
      *
      * @var array
      */
-    protected $fillable = ['sous_categorie_id', 'titre', 'ordre', 'fichier', 'fichier_date', 'fichier_taille'];
+    protected $fillable = ['sous_categorie_id', 'titre', 'numero', 'fichier', 'fichier_date', 'fichier_taille'];
 
     protected $casts = [
         'fichier_date' => 'datetime:Y-m-d',
