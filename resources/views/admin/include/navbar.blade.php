@@ -29,10 +29,15 @@
                 </div>
             </div>
         </div>
+        @php
+            $route = request()
+                ->route()
+                ->getName();
+        @endphp
         <div class="collapse navbar-collapse" id="navbar-menu">
             <div class="d-flex flex-column flex-md-row flex-fill align-items-stretch align-items-md-center">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
+                    <li @class(['nav-item', 'active' => str_contains($route, 'contenu.')])>
                         <a class="nav-link" href="{{ route('admin.contenu.index') }}">
                             <span
                                 class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
@@ -53,7 +58,7 @@
                             </span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li @class(['nav-item', 'active' => str_contains($route, 'categorie.')])>
                         <a class="nav-link" href="{{ route('admin.categorie.index') }}">
                             <span
                                 class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
@@ -72,8 +77,8 @@
                             </span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.image.index') }}">
+                    <li @class(['nav-item', 'active' => str_contains($route, 'image.')])>
+                        <a class='nav-link' href="{{ route('admin.image.index') }}">
                             <span
                                 class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-slideshow"
@@ -95,8 +100,8 @@
                             </span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.souscategorie.index') }}">
+                    <li @class(['nav-item', 'active' => str_contains($route, 'admin.souscategorie.')])>
+                        <a class='nav-link' href="{{ route('admin.souscategorie.index') }}">
                             <span
                                 class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list"

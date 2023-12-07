@@ -17,7 +17,7 @@ class ContenuInfoLatest implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct()
+    public function __construct(public ?string $dateString = null)
     {
         //
     }
@@ -27,7 +27,7 @@ class ContenuInfoLatest implements ShouldQueue
      */
     public function handle(): void
     {
-        $dateString = Contenu::max('fichier_date') ?? 0;
+        $dateString = $this->dateString ?: Contenu::max('fichier_date') ?? 0;
         $timestamp = strtotime($dateString);
 
         exec('python ' . config('baiboly.slide_app') . ' ' . config('baiboly.slide_url') . ' ' . $timestamp . '', $output, $return_var);
