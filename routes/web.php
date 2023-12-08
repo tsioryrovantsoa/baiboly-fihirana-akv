@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BackupController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
@@ -51,6 +52,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('categorie', AdminCategorieController::class);
     Route::resource('image', ImageController::class);
     Route::resource('souscategorie', AdminSousCategorieController::class);
+    Route::get('/backup',[BackupController::class,'index'])->name('backup');
+    Route::get('/export',[BackupController::class,'export'])->name('export');
 });
 
 Route::get('/get-requis-numero', [ContenuController::class, 'getRequisNumero']);

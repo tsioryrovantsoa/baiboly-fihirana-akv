@@ -49,18 +49,18 @@
                             <input type="text" class="form-control" name="titre"
                                 value="{{ $contenu->titre ?? old('titre') }}">
                         </div>
-                        @isset($contenu)
-                            <div class="mb-3">
-                                <div class="form-label">Fichier</div>
-                                <input type="file" class="form-control" name="fichier">
+                        <div class="mb-3">
+                            <div class="form-label">Fichier</div>
+                            <input type="file" class="form-control" name="fichier">
+                            @isset($contenu)
                                 <span class="form-check-description">
                                     Fichier actuel :
                                     <a href="{{ $contenu->fichierURL() }}" target="_self" class="custom-link">
                                         {{ $contenu->fichierURL() }}
                                     </a><br />
                                 </span>
-                            </div>
-                        @endisset
+                            @endisset
+                        </div>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,8 @@
     <div class="card-footer text-end">
         <div class="d-flex">
             <a href="{{ route('admin.contenu.index') }}" class="btn btn-link">Retour</a>
-            <button type="submit" class="btn btn-primary ms-auto">{{isset($contenu) ? 'Modifier' : 'Creer'}}</button>
+            <button type="submit"
+                class="btn btn-primary ms-auto">{{ isset($contenu) ? 'Modifier' : 'Creer' }}</button>
         </div>
     </div>
 </form>
