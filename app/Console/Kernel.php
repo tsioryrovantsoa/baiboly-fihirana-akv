@@ -16,6 +16,8 @@ class Kernel extends ConsoleKernel
     {
         $schedule->job(new ContenuInfoFile)->weekly();
         $schedule->job(new ContenuInfoLatest)->monthly();
+        $schedule->command('backup:clean')->weekly()->at('01:00');
+        $schedule->command('backup:run')->weekly()->at('01:30');
     }
 
     /**
@@ -23,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands(): void
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }

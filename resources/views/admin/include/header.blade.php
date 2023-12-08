@@ -40,7 +40,7 @@
             @if ($errors->any())
                 <div class="success alert style-1 rounded" style="margin-top: 7px;padding: 12px 38px 14px 18px;">
                     @foreach ($errors->all() as $error)
-                        {{ $error }}.<br>
+                        {{ $error }}<br>
                     @endforeach
                 </div>
             @endif
