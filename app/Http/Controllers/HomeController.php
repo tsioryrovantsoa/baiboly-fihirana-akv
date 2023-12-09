@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        ContenuInfoFile::dispatch();
+        // ContenuInfoFile::dispatch();
         //ContenuInfoLatest::dispatch();
 
         return view("home.index",[

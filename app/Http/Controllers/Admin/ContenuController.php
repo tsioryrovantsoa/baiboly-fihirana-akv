@@ -45,7 +45,7 @@ class ContenuController extends Controller
     {
         // $filePath = escapeshellarg(request('filePath'));
         $filePath = (request('filePath'));
-        $command = 'start /B python F:\\Projet\\Perso\\baiboly-to-powerpoint\\open.py ' . $filePath;
+        $command = 'start /B python ' . config('baiboly.open_app') . ' ' . $filePath;
 
         // Lancer la commande en arrière-plan
         pclose(popen($command, 'r'));
